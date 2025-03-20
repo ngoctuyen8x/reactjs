@@ -6,6 +6,11 @@ import { jsxs } from "react/jsx-runtime";
 import Button from "./Button";
 import Card from "./Card";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   // const [tasks, setTasks] = useState([
   //   { text: "học", complete: false },
@@ -97,6 +102,12 @@ function App() {
 
     setCards(updatedCards);
   };
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+    </Routes>
+  </Router>
   return (
     // <>
     //   <h1>Danh sách công việc </h1>
@@ -113,6 +124,15 @@ function App() {
 
     // </>
     <>
+      <nav>
+        <Link to="/">
+          <span>Home</span>
+        </Link>
+        <Link to="/about">
+          <span>About</span>
+        </Link>
+      </nav>
+
       <h1>Danh sách công việc </h1>
       <TaskInput addTask={addTask}></TaskInput>
       <TaskList tasks={tasks} toogletasks={toogletasks} removeTasks={removeTasks}></TaskList>
